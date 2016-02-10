@@ -1,0 +1,24 @@
+{
+  "name": "photogallery-vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blankmaker/photogallery-vanilla.git"
+  },
+  "author": "David Nguyen <david@blankmaker.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blankmaker/photogallery-vanilla/issues"
+  },
+  "homepage": "https://github.com/blankmaker/photogallery-vanilla",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "node-sass": "^3.4.2"
+  }
+}
