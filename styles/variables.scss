@@ -1,0 +1,23 @@
+$base-type-unit: .5rem;
+$base-font-size: 1rem;
+$base-line-height: 3 * $base-type-unit;
+
+$small-font-size: .875 * $base-font-size;
+$small-line-height: 2 * $base-type-unit;
+
+$normal-font-size: $base-font-size;
+$normal-line-height: $base-line-height;
+
+$large-font-size: 1.3125 * $base-font-size;
+$large-line-height: 4 * $base-type-unit;
+
+$default-font-family: Verdana, Geneva, sans-serif;
+
+$slate-color: #333333;
+$light-grey-color: #cdcdd1;
+$v-light-grey-color: #e6e6e6;
+
+// Spacing
+$vertical-spacing: $base-line-height;
+$small-vertical-spacing: $vertical-spacing / 2;
+$large-vertical-spacing: $vertical-spacing * 2;
