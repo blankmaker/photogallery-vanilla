@@ -2,6 +2,9 @@ $base-type-unit: .5rem;
 $base-font-size: 1rem;
 $base-line-height: 3 * $base-type-unit;
 
+$x-small-font-size: .75 * $base-font-size;
+$x-small-line-height: 2 * $base-type-unit;
+
 $small-font-size: .875 * $base-font-size;
 $small-line-height: 2 * $base-type-unit;
 
@@ -13,6 +16,7 @@ $large-line-height: 4 * $base-type-unit;
 
 $default-font-family: Verdana, Geneva, sans-serif;
 
+$white-color: #FFFFFF;
 $slate-color: #333333;
 $light-grey-color: #cdcdd1;
 $v-light-grey-color: #e6e6e6;

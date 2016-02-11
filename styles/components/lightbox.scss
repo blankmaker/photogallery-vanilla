@@ -1,0 +1,38 @@
+@import '../variables';
+
+.lightbox {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: none;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  &__imagecontainer {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__image {
+    display: block;
+  }
+
+  &__imagecaption {
+    padding: $small-vertical-spacing;
+    font-family: $default-font-family;
+    font-size: $x-small-font-size;
+    color: $white-color;
+  }
+}
