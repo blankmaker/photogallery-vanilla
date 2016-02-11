@@ -27,6 +27,7 @@
 
   &__image {
     display: block;
+    max-height: 600px;
   }
 
   &__imagecaption {
@@ -34,5 +35,17 @@
     font-family: $default-font-family;
     font-size: $x-small-font-size;
     color: $white-color;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $white-color;
+      cursor: pointer;
+      transition: color .1s ease-out;
+
+      &:hover {
+        color: $yellow-color;
+      }
+    }
   }
 }
