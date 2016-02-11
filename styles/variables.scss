@@ -14,6 +14,9 @@ $normal-line-height: $base-line-height;
 $large-font-size: 1.3125 * $base-font-size;
 $large-line-height: 4 * $base-type-unit;
 
+$x-large-font-size: 2 * $base-font-size;
+$x-large-line-height: 4 * $base-font-size;
+
 $default-font-family: Verdana, Geneva, sans-serif;
 
 $white-color: #FFFFFF;
@@ -22,7 +25,6 @@ $slate-color: #333333;
 $light-grey-color: #cdcdd1;
 $v-light-grey-color: #e6e6e6;
 
-// Spacing
 $vertical-spacing: $base-line-height;
 $small-vertical-spacing: $vertical-spacing / 2;
 $large-vertical-spacing: $vertical-spacing * 2;

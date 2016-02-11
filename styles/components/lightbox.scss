@@ -48,4 +48,20 @@
       }
     }
   }
+
+  &__close {
+    background: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: none;
+
+    &:before {
+      content: '\00D7';
+      font-size: $x-large-font-size;
+      color: $white-color;
+    }
+  }
+
+  
 }

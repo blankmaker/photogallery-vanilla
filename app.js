@@ -1,10 +1,19 @@
 'use strict';
 
+// remove event listeners?
+// loading animation
+// so many globals! fix this.
+
 var images;
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('gallery').addEventListener('click', function(e) {
     loadLightbox(e.target.dataset.position, images);
+  });
+
+  document.getElementById('close').addEventListener('click', function(e) {
+    e.stopPropagation();
+    closeLightbox();
   });
 });
 
@@ -14,6 +23,14 @@ function loadLightbox(imagePosition, imageCollection) {
 
   var lightbox = buildLightbox(imageCollection[imagePosition]);
   lightbox.style.display = 'block';
+}
+
+function closeLightbox () {
+  var lightbox = document.getElementById('lightbox');
+  var body = document.getElementsByTagName('body')[0];
+  lightbox.style.display = 'none';
+  body.style.overflow = 'auto';
+
 }
 
 function buildLightbox(imageObj) {
