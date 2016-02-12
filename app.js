@@ -11,47 +11,56 @@ document.addEventListener('DOMContentLoaded', function() {
     loadLightbox(e.target.dataset.position, images);
   });
 
-  document.getElementById('close').addEventListener('click', function(e) {
-    e.stopPropagation();
-    closeLightbox();
-  });
+  document.getElementById('close').addEventListener('click', closeLightbox, false);
+  // document.getElementById('next').addEventListener('click', toggleImages, false);
+  // document.getElementById('prev').addEventListener('click', toggleImages, false);
 });
 
 function loadLightbox(imagePosition, imageCollection) {
   var body = document.getElementsByTagName('body')[0];
   body.style.overflow = 'hidden';
+  updateLightboxPhoto(imageCollection[imagePosition]);
 
-  var lightbox = buildLightbox(imageCollection[imagePosition]);
+  var lightbox = document.getElementById('lightbox');
   lightbox.style.display = 'block';
 }
 
-function closeLightbox () {
+function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
   var body = document.getElementsByTagName('body')[0];
   lightbox.style.display = 'none';
   body.style.overflow = 'auto';
 
+  // document.removeEventListener('keydown', keydownListener, false);
 }
 
-function buildLightbox(imageObj) {
-  var background = document.getElementById('lightbox');
-  var imageContainer = document.createElement('figure');
-  var image = document.createElement('img');
-  var imageCaption = document.createElement('figcaption');
-
-  imageContainer.className = 'lightbox__imagecontainer';
-  image.className = 'lightbox__image';
-  imageCaption.className = 'lightbox__imagecaption';
+function updateLightboxPhoto(imageObj) {
+  var image = document.getElementById('image');
+  var imageCaption = document.getElementById('caption');
 
   imageCaption.innerHTML = '"' + imageObj.title + '"' +  ' by ' + '<a href="https://www.flickr.com/photos/' + imageObj.owner + '">' + imageObj.ownername + '</a>';
   image.src = imageObj.url_c ? imageObj.url_c : imageObj.url_m;
 
-  imageContainer.appendChild(image);
-  imageContainer.appendChild(imageCaption);
-  background.appendChild(imageContainer);
-
-  return background;
+  // document.addEventListener('keydown', keydownListener, false);
 }
+
+// function keydownListener(e) {
+//   e.stopPropagation();
+//   if (e.keyCode === 27) {
+//     closeLightbox();
+//   } else if (e.keyCode === 37 || e.keyCode === 39) {
+//     toggleImages(e);
+//   }
+// }
+
+// function toggleImages(e) {
+//   console.log('hi');
+//   if (e.keyCode === 37) {
+//     console.log('prev');
+//   } else if (e.keyCode === 39) {
+//     console.log('next');
+//   }
+// }
 
 function attachThumbnails(imagesCollection) {
   imagesCollection.forEach(function(imageObj, i) {
