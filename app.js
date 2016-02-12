@@ -1,8 +1,8 @@
 'use strict';
 
-// remove event listeners?
 // loading animation
 // so many globals! fix this.
+// make responsive-er
 
 var images;
 
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById('close').addEventListener('click', closeLightbox, false);
-  // document.getElementById('next').addEventListener('click', toggleImages, false);
-  // document.getElementById('prev').addEventListener('click', toggleImages, false);
+  document.getElementById('next').addEventListener('click', toggleImages, false);
+  document.getElementById('prev').addEventListener('click', toggleImages, false);
 });
 
 function loadLightbox(imagePosition, imageCollection) {
@@ -31,7 +31,7 @@ function closeLightbox() {
   lightbox.style.display = 'none';
   body.style.overflow = 'auto';
 
-  // document.removeEventListener('keydown', keydownListener, false);
+  document.removeEventListener('keydown', keydownListener, false);
 }
 
 function updateLightboxPhoto(imageObj) {
@@ -41,26 +41,26 @@ function updateLightboxPhoto(imageObj) {
   imageCaption.innerHTML = '"' + imageObj.title + '"' +  ' by ' + '<a href="https://www.flickr.com/photos/' + imageObj.owner + '">' + imageObj.ownername + '</a>';
   image.src = imageObj.url_c ? imageObj.url_c : imageObj.url_m;
 
-  // document.addEventListener('keydown', keydownListener, false);
+  document.addEventListener('keydown', keydownListener, false);
 }
 
-// function keydownListener(e) {
-//   e.stopPropagation();
-//   if (e.keyCode === 27) {
-//     closeLightbox();
-//   } else if (e.keyCode === 37 || e.keyCode === 39) {
-//     toggleImages(e);
-//   }
-// }
+function keydownListener(e) {
+  e.stopPropagation();
+  if (e.keyCode === 27) {
+    closeLightbox();
+  } else if (e.keyCode === 37 || e.keyCode === 39) {
+    toggleImages(e);
+  }
+}
 
-// function toggleImages(e) {
-//   console.log('hi');
-//   if (e.keyCode === 37) {
-//     console.log('prev');
-//   } else if (e.keyCode === 39) {
-//     console.log('next');
-//   }
-// }
+function toggleImages(e) {
+  e.target.blur();
+  if (e.keyCode === 37 || e.target.id === 'prev') {
+    console.log('prev');
+  } else if (e.keyCode === 39 || e.target.id === 'next') {
+    console.log('next');
+  }
+}
 
 function attachThumbnails(imagesCollection) {
   imagesCollection.forEach(function(imageObj, i) {
