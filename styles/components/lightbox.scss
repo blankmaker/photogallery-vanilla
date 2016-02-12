@@ -38,10 +38,7 @@
 
     a {
       font-weight: bold;
-      text-decoration: none;
       color: $white-color;
-      cursor: pointer;
-      transition: color .1s ease-out;
 
       &:hover {
         color: $yellow-color;
@@ -58,7 +55,7 @@
 
     &:before {
       content: '\00D7';
-      font-size: $x-large-font-size;
+      font-size: $xx-large-font-size;
       color: $white-color;
     }
   }
