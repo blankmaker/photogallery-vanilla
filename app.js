@@ -1,8 +1,8 @@
 'use strict';
 
-// loading animation
 // so many globals! fix this.
 // make responsive-er
+// add alt tags
 
 var images;
 var currentPosition;
@@ -11,10 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('gallery').addEventListener('click', function(e) {
     loadLightbox(e.target.dataset.position, images);
   });
-
   document.getElementById('close').addEventListener('click', closeLightbox, false);
   document.getElementById('next').addEventListener('click', toggleImages, false);
   document.getElementById('prev').addEventListener('click', toggleImages, false);
+
+  document.getElementById('image').addEventListener('load', function() {
+    document.getElementById('lightspinner').style.display = 'none';
+    document.getElementById('image').style.display = 'block';
+    document.getElementById('caption').style.display = 'block';
+  });
 });
 
 function loadLightbox(imagePosition) {
@@ -26,7 +31,6 @@ function loadLightbox(imagePosition) {
   var lightbox = document.getElementById('lightbox');
   lightbox.style.display = 'block';
 
-  // should this event be here?
   document.addEventListener('keydown', keydownListener, false);
 }
 
@@ -41,11 +45,16 @@ function closeLightbox() {
 }
 
 function updateLightboxPhoto(imageObj) {
+  var loadingAnimation = document.getElementById('lightspinner');
   var image = document.getElementById('image');
   var imageCaption = document.getElementById('caption');
+  image.style.display = 'none';
+  imageCaption.style.display = 'none';
+  loadingAnimation.style.display = 'block';
 
-  imageCaption.innerHTML = '"' + imageObj.title + '"' +  ' by ' + '<a href="https://www.flickr.com/photos/' + imageObj.owner + '">' + imageObj.ownername + '</a>';
   image.src = imageObj.url_c ? imageObj.url_c : imageObj.url_m;
+  image.alt = imageObj.title;
+  imageCaption.innerHTML = '"' + imageObj.title + '"' +  ' by ' + '<a href="https://www.flickr.com/photos/' + imageObj.owner + '">' + imageObj.ownername + '</a>';
 }
 
 function keydownListener(e) {
@@ -116,6 +125,7 @@ var flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.galleries.g
 var flickrRequest = new XMLHttpRequest();
 flickrRequest.onreadystatechange = function() {
   if (flickrRequest.readyState === 4 && flickrRequest.status === 200) {
+    document.getElementById('darkspinner').style.display = 'none';
     images = JSON.parse(flickrRequest.responseText).photos.photo;
     attachThumbnails(images);
     console.log(images);
