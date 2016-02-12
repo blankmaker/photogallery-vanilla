@@ -5,6 +5,7 @@
 // make responsive-er
 
 var images;
+var currentPosition;
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('gallery').addEventListener('click', function(e) {
@@ -16,13 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('prev').addEventListener('click', toggleImages, false);
 });
 
-function loadLightbox(imagePosition, imageCollection) {
+function loadLightbox(imagePosition) {
   var body = document.getElementsByTagName('body')[0];
   body.style.overflow = 'hidden';
-  updateLightboxPhoto(imageCollection[imagePosition]);
+  updateLightboxPhoto(images[imagePosition]);
+  currentPosition = Number(imagePosition);
 
   var lightbox = document.getElementById('lightbox');
   lightbox.style.display = 'block';
+
+  // should this event be here?
+  document.addEventListener('keydown', keydownListener, false);
 }
 
 function closeLightbox() {
@@ -30,6 +35,7 @@ function closeLightbox() {
   var body = document.getElementsByTagName('body')[0];
   lightbox.style.display = 'none';
   body.style.overflow = 'auto';
+  currentPosition = 0;
 
   document.removeEventListener('keydown', keydownListener, false);
 }
@@ -40,8 +46,6 @@ function updateLightboxPhoto(imageObj) {
 
   imageCaption.innerHTML = '"' + imageObj.title + '"' +  ' by ' + '<a href="https://www.flickr.com/photos/' + imageObj.owner + '">' + imageObj.ownername + '</a>';
   image.src = imageObj.url_c ? imageObj.url_c : imageObj.url_m;
-
-  document.addEventListener('keydown', keydownListener, false);
 }
 
 function keydownListener(e) {
@@ -56,9 +60,23 @@ function keydownListener(e) {
 function toggleImages(e) {
   e.target.blur();
   if (e.keyCode === 37 || e.target.id === 'prev') {
-    console.log('prev');
+    incrementCounter(false);
+    updateLightboxPhoto(images[currentPosition]);
   } else if (e.keyCode === 39 || e.target.id === 'next') {
-    console.log('next');
+    incrementCounter(true);
+    updateLightboxPhoto(images[currentPosition]);
+  }
+}
+
+function incrementCounter(increase) {
+  if (currentPosition === images.length - 1 && increase) {
+    currentPosition = 0;
+  } else if (currentPosition === 0 && !increase) {
+    currentPosition = images.length - 1;
+  } else if (increase) {
+    currentPosition++;
+  } else {
+    currentPosition--;
   }
 }
 
