@@ -26,3 +26,5 @@ gulp.task('compress', function() {
     .pipe(uglify({mangle: false}))
     .pipe(gulp.dest('build'));
 });
+
+gulp.task('build', ['sass', 'concat-styles', 'compress']);
