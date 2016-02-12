@@ -1,0 +1,30 @@
+@import '../variables';
+
+.gallery {
+  margin: $large-vertical-spacing auto;
+  padding: 0;
+  text-align: center;
+
+  &__thumbnail {
+    display: inline-block;
+    margin: $small-vertical-spacing;
+    padding: 3px;
+    border: 1px solid transparent;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $v-light-grey-color;
+    }
+
+    img {
+      height: 150px;
+      width: 150px; 
+      vertical-align: bottom;
+    }
+  }
+
+  &__loading {
+    margin: $large-vertical-spacing auto;
+    display: block;
+  }
+}

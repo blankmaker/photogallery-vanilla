@@ -1,0 +1,95 @@
+@import '../variables';
+
+.lightbox {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: none;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  &__imagecontainer {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__image {
+    display: block;
+    max-height: 600px;
+  }
+
+  &__imagecaption {
+    padding: $small-vertical-spacing;
+    font-family: $default-font-family;
+    font-size: $x-small-font-size;
+    color: $white-color;
+
+    a {
+      font-weight: bold;
+      color: $white-color;
+
+      &:hover {
+        color: $yellow-color;
+      }
+    }
+  }
+
+  &__close {
+    background: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: none;
+
+    &:before {
+      content: '\00D7';
+      font-size: $xx-large-font-size;
+      color: $white-color;
+    }
+  }
+
+  &__prev,
+  &__next {
+    background: $black-color;
+    border-radius: 5px;
+    border: none;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    margin: 0 $vertical-spacing;
+    height: 70px;
+
+    &:before {
+      font-size: $x-large-font-size;
+      color: $white-color;
+    }
+  }
+
+  &__prev {
+    left: 0;
+
+    &:before {
+      content: '\003C';
+    }
+  }
+
+  &__next {
+    right: 0;
+
+    &:before {
+      content: '\003E';
+    }
+  }
+}

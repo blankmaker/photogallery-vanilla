@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Photo gallery and lightbox demo with native browser JavaScript">
+    <meta name="author" content="David Nguyen">
+    <link rel="stylesheet" type="text/css" href="build/stylebundle.css">
+    <title>Photo Gallery Lightbox Demo</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Photo Gallery Lightbox Demo</h1>
+    </header>
+    <main>
+      <img id="darkspinner" class="gallery__loading" src="dark-spin.svg" alt="gallery loading symbol"/>
+      <ul id="gallery" class="gallery"></ul>
+      <div id="lightbox" class="lightbox">
+        <button id="close" class="lightbox__close" type="button"></button>
+        <button id="prev" class="lightbox__prev" type="button"></button>
+        <figure id="imagecontainer" class="lightbox__imagecontainer">
+          <img id="lightspinner" src="spin.svg" alt="image loading symbol"/>
+          <img id="image" class="lightbox__image" alt="lightbox image placeholder" src="" />
+          <figcaption id="caption" class="lightbox__imagecaption"></figcaption>
+        </figure>
+        <button id="next" class="lightbox__next" type="button"></button>
+      </div>
+    </main>
+    <footer>
+      Built by <a href="https://www.github.com/blankmaker">blankmaker</a>, Feb 2016.
+    </footer>
+    <script type="text/javascript" src="build/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+@import '../variables';
+
+header {
+  padding: $large-vertical-spacing;
+  text-align: center;
+  border-bottom: 1px solid $light-grey-color;
+
+  .title {
+    font-size: $large-font-size;
+    font-family: $default-font-family;
+    line-height: $large-line-height;
+    color: $slate-color;
+  }
+}
+
+footer {
+  font-family: $default-font-family;
+  font-size: $small-font-size;
+  color: $slate-color;
+  text-align: center;
+  margin-bottom: $large-vertical-spacing;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .1s ease-out;
+  color: $slate-color;
+
+  &:hover {
+    color: $light-grey-color;
+  }
+}
